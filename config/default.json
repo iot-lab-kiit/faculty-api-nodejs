@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://localhost:27017/aerofit_api_nodejs"
+  "mongodb": "mongodb://localhost:27017/faculty_api_nodejs"
 }
