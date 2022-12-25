@@ -1,0 +1,78 @@
+{
+  "name": "faculty-api-nodejs",
+  "description": "KiiT Faculty Review",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Harsh Raj",
+    "email": "saketharshraj@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^16.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "yarn run lint && yarn run compile && yarn run jest",
+    "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
+    "local": "ts-node-dev --no-notify src/",
+    "dev": "yarn run compile && node lib/",
+    "prod": "NODE_ENV=production&& yarn run compile && node lib/",
+    "jest": "jest --forceExit",
+    "compile": "shx rm -rf lib/ && tsc"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "ignore": []
+  },
+  "types": "lib/",
+  "dependencies": {
+    "@feathersjs/authentication": "^4.5.15",
+    "@feathersjs/authentication-local": "^4.5.15",
+    "@feathersjs/authentication-oauth": "^4.5.15",
+    "@feathersjs/configuration": "^4.5.15",
+    "@feathersjs/errors": "^4.5.15",
+    "@feathersjs/express": "^4.5.15",
+    "@feathersjs/feathers": "^4.5.15",
+    "@feathersjs/socketio": "^4.5.15",
+    "@feathersjs/transport-commons": "^4.5.15",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "feathers-hooks-common": "^6.1.5",
+    "feathers-mongoose": "^8.5.1",
+    "helmet": "^5.1.0",
+    "mongodb-core": "^3.2.7",
+    "mongoose": "^6.3.6",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.13",
+    "@types/jest": "^29.2.4",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/serve-favicon": "^2.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "axios": "^1.2.1",
+    "eslint": "^8.17.0",
+    "jest": "^29.3.1",
+    "shx": "^0.3.4",
+    "ts-jest": "^29.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  }
+}
