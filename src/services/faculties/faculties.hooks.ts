@@ -6,6 +6,7 @@ import Permit from '../../hooks/Permit';
 import { ADMIN } from '../../constants/Roles';
 import SetDefaultItem from '../../hooks/SetDefaultItem';
 import { ACTIVE, UNDER_REVIEW } from '../../constants/Status';
+import SetDefaultQuery from '../../hooks/SetDefaultQuery';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -13,8 +14,8 @@ const { authenticate } = authentication.hooks;
 export default {
   before: {
     all: [authenticate('jwt')],
-    find: [],
-    get: [],
+    find: [SetDefaultQuery('status', ACTIVE)],
+    get: [SetDefaultQuery('status', ACTIVE)],
     create: [
       SetCreatedBy(),
       iff(Permit.is(ADMIN), SetDefaultItem('status', ACTIVE)).else(
