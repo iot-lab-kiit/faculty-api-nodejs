@@ -1,6 +1,6 @@
 import { Forbidden, NotAuthenticated } from '@feathersjs/errors';
 import { HookContext } from '@feathersjs/feathers';
-import { ADMIN, EMPLOYEE, MEMBER } from '../constants/Roles';
+import { ADMIN, STUDENT } from '../constants/Roles';
 
 /**
  * @description check permission for the user.
@@ -38,8 +38,7 @@ Permit.is =
       return roles.some((each) => each === role);
     };
 
-Permit.MEMBER = Permit(MEMBER);
-Permit.EMPLOYEE = Permit(EMPLOYEE);
+Permit.MEMBER = Permit(STUDENT);
 Permit.ADMIN = Permit(ADMIN);
 
 

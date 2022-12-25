@@ -11,22 +11,22 @@ import { getItems, replaceItems } from 'feathers-hooks-common';
  * @constructor
  */
 const SetDefaultItem =
-    (fieldName: string, defaultValue: any) => (context: HookContext) => {
-        const items = getItems(context);
+  (fieldName: string, defaultValue: any) => (context: HookContext) => {
+    const items = getItems(context);
 
-        if (Array.isArray(items)) {
-            items.forEach((item) => {
-                if (typeof item[fieldName] === 'undefined')
-                    item[fieldName] = defaultValue;
-            });
-        } else {
-            if (typeof items[fieldName] === 'undefined')
-                items[fieldName] = defaultValue;
-        }
+    if (Array.isArray(items)) {
+      items.forEach((item) => {
+        if (typeof item[fieldName] === 'undefined')
+          item[fieldName] = defaultValue;
+      });
+    } else {
+      if (typeof items[fieldName] === 'undefined')
+        items[fieldName] = defaultValue;
+    }
 
-        replaceItems(context, items);
+    replaceItems(context, items);
 
-        return context;
-    };
+    return context;
+  };
 
 export default SetDefaultItem;

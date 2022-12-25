@@ -6,20 +6,20 @@ import { HookContext } from '@feathersjs/feathers';
  * @param _fieldNames
  */
 const SetCreatedByQuery =
-    (..._fieldNames: string[]) =>
-      (context: HookContext) => {
-        const { params } = context;
+  (..._fieldNames: string[]) =>
+    (context: HookContext) => {
+      const { params } = context;
 
-        const { user, query = {} } = params;
+      const { user, query = {} } = params;
 
-        if (!user) return context;
+      if (!user) return context;
 
-        const fieldNames = _fieldNames.length ? _fieldNames : ['createdBy'];
+      const fieldNames = _fieldNames.length ? _fieldNames : ['createdBy'];
 
-        if (Array.isArray(fieldNames)) {
-          fieldNames.map((each) => (query[each] = user._id));
-        }
-        return context;
-      };
+      if (Array.isArray(fieldNames)) {
+        fieldNames.map((each) => (query[each] = user._id));
+      }
+      return context;
+    };
 
 export default SetCreatedByQuery;
