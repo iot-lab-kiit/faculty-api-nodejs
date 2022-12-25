@@ -17,3 +17,5 @@ enum Gender {
     MALE,
     FEMALE
 }
+
+export { User };
