@@ -7,6 +7,7 @@ import Permit from '../../hooks/Permit';
 import { ADMIN } from '../../constants/Roles';
 import SetDefaultItem from '../../hooks/SetDefaultItem';
 import { ACTIVE } from '../../constants/Status';
+import ProfanityCheck from './hooks/ProfanityCheck';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -16,7 +17,7 @@ export default {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [SetCreatedBy(), SetDefaultItem('status', ACTIVE)],
+    create: [SetCreatedBy(), ProfanityCheck(), SetDefaultItem('status', ACTIVE)],
     update: [disallow()],
     patch: [SetCreatedByQuery()],
     remove: [iff(isNot(Permit.is(ADMIN)), SetCreatedByQuery())]
