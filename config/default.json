@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://localhost:27017/faculty_api_nodejs"
+  "mongodb": "mongodb+srv://ProgrammerGod:Suvo%402003@cluster0.vtkxqsx.mongodb.net/faculty_api_nodejs"
 }
