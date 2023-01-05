@@ -19,6 +19,9 @@ export default function (app: Application): Model<any> {
       type: String,
       required: true,
     },
+    avatar: {
+      type: String,
+    },
     avgRating: {
       type: Number,
       default: 0,
