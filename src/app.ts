@@ -9,7 +9,6 @@ import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
 
-
 import { Application } from './declarations';
 import logger from './logger';
 import middleware from './middleware';
@@ -19,6 +18,9 @@ import channels from './channels';
 import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 import authentication from './authentication';
 import mongoose from './mongoose';
+
+// Cron Jobs
+import UpdateFacultyReviews from './cron/UpdateFacultyReview';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers());
@@ -57,5 +59,9 @@ app.use(express.notFound());
 app.use(express.errorHandler({ logger } as any));
 
 app.hooks(appHooks);
+
+
+//cron jobs
+app.configure(UpdateFacultyReviews);
 
 export default app;

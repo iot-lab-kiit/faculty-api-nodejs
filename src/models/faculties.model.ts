@@ -22,10 +22,21 @@ export default function (app: Application): Model<any> {
     avatar: {
       type: String,
     },
-    avgRating: {
+    avgTeachingRating: {
       type: Number,
       default: 0,
-      required: true,
+    },
+    avgMarkingRating: {
+      type: Number,
+      default: 0,
+    },
+    avgAttendanceRating: {
+      type: Number,
+      default: 0,
+    },
+    avgOverallRating: {
+      type: Number,
+      default: 0,
     },
     status: {
       type: Number,
