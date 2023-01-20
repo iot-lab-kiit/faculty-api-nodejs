@@ -53,6 +53,7 @@
     "cors": "^2.8.5",
     "cron": "^2.2.0",
     "feathers-hooks-common": "^6.1.5",
+    "feathers-mongodb-fuzzy-search": "^2.0.1",
     "feathers-mongoose": "^8.5.1",
     "helmet": "^5.1.0",
     "mongodb-core": "^3.2.7",
