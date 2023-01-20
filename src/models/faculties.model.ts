@@ -34,10 +34,6 @@ export default function (app: Application): Model<any> {
       type: Number,
       default: 0,
     },
-    avgOverallRating: {
-      type: Number,
-      default: 0,
-    },
     status: {
       type: Number,
       default: ACTIVE,

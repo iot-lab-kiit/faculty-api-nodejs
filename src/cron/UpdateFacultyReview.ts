@@ -32,10 +32,9 @@ const reviewPipeline = [
   {
     $project: {
       _id: 1,
-      'Teacher Name': '$faculty_info.name',
-      'Teaching Average': '$teachingAvg',
-      'Marking Average': '$markingAvg',
-      'Attendance Average': '$attendanceAvg',
+      'avgTeaching': '$teachingAvg',
+      'avgMarking': '$markingAvg',
+      'avgAttendance': '$attendanceAvg',
     },
   },
 ];
@@ -43,9 +42,23 @@ const reviewPipeline = [
 const UpdateFacultyReviews = (app: Application) => {
   const handleReviewUpdate = async () => {
     const reviewModel = app.service('reviews').Model;
-
     const review = await reviewModel.aggregate(reviewPipeline).exec();
-    console.log(review);
+
+    const facultyModel = app.service('faculties').Model;
+    const updatedTeacherData = review.map((review) => {
+      return {
+        updateOne: {
+          filter: { _id: review._id },
+          update: { $set: {
+            avgTeachingRating: review.avgTeaching,
+            avgMarkingRating: review.avgMarking,
+            avgAttendanceRating: review.avgAttendance,
+          }},
+        },
+      };
+    });
+
+    facultyModel.bulkWrite(updatedTeacherData);
   };
 
   const job = new CronJob(cronTime, handleReviewUpdate);
