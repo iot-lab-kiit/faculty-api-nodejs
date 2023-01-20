@@ -67,6 +67,7 @@
     "@types/jest": "^29.2.4",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/serve-favicon": "^2.5.3",
+    "@types/socket.io-parser": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "axios": "^1.2.1",
