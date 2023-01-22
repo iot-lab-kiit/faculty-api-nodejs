@@ -32,9 +32,9 @@ const reviewPipeline = [
   {
     $project: {
       _id: 1,
-      'avgTeaching': '$teachingAvg',
-      'avgMarking': '$markingAvg',
-      'avgAttendance': '$attendanceAvg',
+      avgTeaching: '$teachingAvg',
+      avgMarking: '$markingAvg',
+      avgAttendance: '$attendanceAvg',
     },
   },
 ];
@@ -49,11 +49,13 @@ const UpdateFacultyReviews = (app: Application) => {
       return {
         updateOne: {
           filter: { _id: review._id },
-          update: { $set: {
-            avgTeachingRating: review.avgTeaching,
-            avgMarkingRating: review.avgMarking,
-            avgAttendanceRating: review.avgAttendance,
-          }},
+          update: {
+            $set: {
+              avgTeachingRating: review.avgTeaching,
+              avgMarkingRating: review.avgMarking,
+              avgAttendanceRating: review.avgAttendance,
+            },
+          },
         },
       };
     });
