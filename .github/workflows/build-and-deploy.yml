@@ -18,8 +18,8 @@ jobs:
 
     - name: Stop and Remove old container
       run: |
-        docker stop my-container || true
-        docker rm my-container || true
+        docker stop faculty-api-container || true
+        docker rm faculty-api-container || true
 
     - name: Start new container
       run: docker run -d --name faculty-api-container -p 6201:3030 iot-lab-kiit/faculty-api-nodejs-image:v1
