@@ -1,4 +1,4 @@
-name: Test Workflow
+name: Build and Deploy
 
 on:
   push:
@@ -6,15 +6,20 @@ on:
       - main
 
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Run tests
+    - name: Build Docker image
+      run: docker build -t iot-lab-kiit/faculty-api-nodejs-image:v1 .
+
+    - name: Stop and Remove old container
       run: |
-        echo "Running tests..."
-        sleep 5
-        echo "Tests complete."
+        docker stop my-container || true
+        docker rm my-container || true
+
+    - name: Start new container
+      run: docker run -d --name faculty-api-container -p 6201:3030 iot-lab-kiit/faculty-api-nodejs-image:v1
