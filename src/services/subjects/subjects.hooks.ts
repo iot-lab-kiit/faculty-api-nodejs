@@ -6,6 +6,10 @@ import { ADMIN } from '../../constants/Roles';
 import { ACTIVE, UNDER_REVIEW } from '../../constants/Status';
 import Permit from '../../hooks/Permit';
 import SetDefaultItem from '../../hooks/SetDefaultItem';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import search from 'feathers-mongodb-fuzzy-search';
+
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -13,7 +17,11 @@ const { authenticate } = authentication.hooks;
 export default {
   before: {
     all: [authenticate('jwt')],
-    find: [],
+    find: [
+      search({
+        fields: ['name', 'code'],
+      }),
+    ],
     get: [],
     create: [
       SetCreatedBy(),

@@ -1,8 +1,8 @@
 Arguments: 
-  /home/harshraj/.nvm/versions/node/v16.16.0/bin/node /home/harshraj/.yarn/bin/yarn.js add feathers-hooks-common
+  /home/harshraj/.nvm/versions/node/v16.16.0/bin/node /home/harshraj/.yarn/bin/yarn.js add -D @types/feathers-mongodb-fuzzy-search
 
 PATH: 
-  /home/harshraj/.yarn/bin:/home/harshraj/.config/yarn/global/node_modules/.bin:/home/harshraj/.nvm/versions/node/v16.16.0/bin:/home/harshraj/.yarn/bin:/home/harshraj/.config/yarn/global/node_modules/.bin:/home/harshraj/.sdkman/candidates/java/current/bin:/opt/apache-maven-3.6.3/bin:/home/harshraj/.cargo/bin:/home/harshraj/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/harshraj/.local/share/JetBrains/Toolbox/scripts:/home/harshraj/n/bin
+  /home/harshraj/.yarn/bin:/home/harshraj/.config/yarn/global/node_modules/.bin:/opt/apache-maven-3.6.3/bin:/home/harshraj/.local/bin:/home/harshraj/.nvm/versions/node/v16.16.0/bin:/home/harshraj/.yarn/bin:/home/harshraj/.config/yarn/global/node_modules/.bin:/home/harshraj/.sdkman/candidates/java/current/bin:/opt/apache-maven-3.6.3/bin:/home/harshraj/.cargo/bin:/home/harshraj/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/harshraj/.local/share/JetBrains/Toolbox/scripts:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/harshraj/n/bin:/home/harshraj/.local/share/JetBrains/Toolbox/scripts
 
 Yarn version: 
   1.22.19
@@ -14,13 +14,22 @@ Platform:
   linux x64
 
 Trace: 
-  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+  Error: https://registry.yarnpkg.com/@types%2ffeathers-mongodb-fuzzy-search: Not found
+      at Request.params.callback [as _callback] (/home/harshraj/.yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/home/harshraj/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/home/harshraj/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/home/harshraj/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
-    "name": "aerofit-api-nodejs",
-    "description": "Aerfit Gym API",
+    "name": "faculty-api-nodejs",
+    "description": "KiiT Faculty Review",
     "version": "0.0.0",
     "homepage": "",
     "private": true,
@@ -30,7 +39,7 @@ npm manifest:
     ],
     "author": {
       "name": "Harsh Raj",
-      "email": "harsh.smartters@gmail.com"
+      "email": "saketharshraj@gmail.com"
     },
     "contributors": [],
     "bugs": {},
@@ -71,6 +80,9 @@ npm manifest:
       "@feathersjs/transport-commons": "^4.5.15",
       "compression": "^1.7.4",
       "cors": "^2.8.5",
+      "cron": "^2.2.0",
+      "feathers-hooks-common": "^6.1.5",
+      "feathers-mongodb-fuzzy-search": "^2.0.1",
       "feathers-mongoose": "^8.5.1",
       "helmet": "^5.1.0",
       "mongodb-core": "^3.2.7",
@@ -81,9 +93,11 @@ npm manifest:
     "devDependencies": {
       "@types/compression": "^1.7.2",
       "@types/cors": "^2.8.13",
+      "@types/cron": "^2.0.0",
       "@types/jest": "^29.2.4",
       "@types/jsonwebtoken": "^8.5.9",
       "@types/serve-favicon": "^2.5.3",
+      "@types/socket.io-parser": "^3.0.0",
       "@typescript-eslint/eslint-plugin": "^5.46.1",
       "@typescript-eslint/parser": "^5.46.1",
       "axios": "^1.2.1",
@@ -1179,6 +1193,11 @@ Lockfile:
       minimatch "^3.1.2"
       strip-json-comments "^3.1.1"
   
+  "@feathers-plus/batch-loader@^0.3.6":
+    version "0.3.6"
+    resolved "https://registry.yarnpkg.com/@feathers-plus/batch-loader/-/batch-loader-0.3.6.tgz#1e096e95fcdffb83fb1a65468e6ef80b416f7d98"
+    integrity sha512-r+n31iZ/B5Rl1mLkC9/S20UI445MdkZvE3VBmjupep2t8OuyTYHPkFEgR25HY6khH+RothK1VL3B5eumk9N2QQ==
+  
   "@feathersjs/adapter-commons@^4.5.11":
     version "4.5.15"
     resolved "https://registry.yarnpkg.com/@feathersjs/adapter-commons/-/adapter-commons-4.5.15.tgz#f7dd1a250b0a58fa735ed31b63e25e35b57418aa"
@@ -1230,7 +1249,7 @@ Lockfile:
       long-timeout "^0.1.1"
       uuid "^8.3.2"
   
-  "@feathersjs/commons@^4.5.11", "@feathersjs/commons@^4.5.15":
+  "@feathersjs/commons@^4.3.7", "@feathersjs/commons@^4.5.11", "@feathersjs/commons@^4.5.15":
     version "4.5.15"
     resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.5.15.tgz#2f9c2599fd93607206ee40ab0e5639b79c7781b8"
     integrity sha512-eVEcLJL3GcPQBQcD77jI3fZ4MMx+iD02Px2Z1lDw+cn/iGCeQkWWAPQs4Tp+HGR1rTL5JO+unyhzN8V9X7OYmw==
@@ -1244,7 +1263,7 @@ Lockfile:
       config "^3.3.6"
       debug "^4.3.3"
   
-  "@feathersjs/errors@^4.5.11", "@feathersjs/errors@^4.5.15":
+  "@feathersjs/errors@^4.3.10", "@feathersjs/errors@^4.5.11", "@feathersjs/errors@^4.5.15":
     version "4.5.15"
     resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-4.5.15.tgz#ec371ca9905685e33f41e331975182f36241d1bd"
     integrity sha512-EJAYWMsWZlUA/halbgZBc6eP2d3HPkHi5GzprYEK58GCh51KJ36VjX7VKVEnMjgBSED+PE00tpr3ZvUC4nUR+Q==
@@ -1698,6 +1717,14 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
+  "@types/cron@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@types/cron/-/cron-2.0.0.tgz#4fe75f2720a3b69a1f7b80e656749f4c2c96d727"
+    integrity sha512-xZM08fqvwIXgghtPVkSPKNgC+JoMQ2OHazEvyTKnNf7aWu1aB6/4lBbQFrb03Td2cUGG7ITzMv3mFYnMu6xRaQ==
+    dependencies:
+      "@types/luxon" "*"
+      "@types/node" "*"
+  
   "@types/engine.io@*":
     version "3.1.7"
     resolved "https://registry.yarnpkg.com/@types/engine.io/-/engine.io-3.1.7.tgz#86e541a5dc52fb7e97735383564a6ae4cfe2e8f5"
@@ -1770,6 +1797,11 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
+  "@types/luxon@*":
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.2.0.tgz#99901b4ab29a5fdffc88fff59b3b47fbfbe0557b"
+    integrity sha512-lGmaGFoaXHuOLXFvuju2bfvZRqxAqkHPx9Y9IQdQABrinJJshJwfNCKV+u7rR3kJbiqfTF/NhOkcxxAFrObyaA==
+  
   "@types/mime@*":
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
@@ -1815,7 +1847,7 @@ Lockfile:
       "@types/mime" "*"
       "@types/node" "*"
   
-  "@types/socket.io-parser@*":
+  "@types/socket.io-parser@*", "@types/socket.io-parser@^3.0.0":
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/@types/socket.io-parser/-/socket.io-parser-3.0.0.tgz#9726d3ab9235757a0a30dd5ccf8975dce54e5e2c"
     integrity sha512-Ry/rbTE6HQNL9eu3LpL1Ocup5VexXu1bSSGlSho/IR5LuRc8YvxwSNJ3JxqTltVJEATLbZkMQETSbxfKNgp4Ew==
@@ -1982,7 +2014,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
     integrity sha512-QbJ0NTQ/I9DI3uSJA4cbexiwQeRAfjPScqIbSjUDd9TOrcg6pTkdgziesOqxBMBzit8vFCTwrP27t13vFOORRA==
   
-  ajv@^6.10.0, ajv@^6.12.4:
+  ajv@^6.10.0, ajv@^6.12.4, ajv@^6.12.6:
     version "6.12.6"
     resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
     integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -2535,6 +2567,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
     integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
   
+  cron@^2.2.0:
+    version "2.2.0"
+    resolved "https://registry.yarnpkg.com/cron/-/cron-2.2.0.tgz#605ae5048e9715a22db12e9fe2563a92740b9fed"
+    integrity sha512-GPiI3OgMv83XRtEUc2gUdaLvJhO3XbLN288layOBkDTupg0RK5IECNGpkykIMHg+muVR2bxt29b0xvCAcBrjYQ==
+    dependencies:
+      luxon "^3.2.1"
+  
   cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     version "7.0.3"
     resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -3007,6 +3046,29 @@ Lockfile:
     dependencies:
       bser "2.1.1"
   
+  feathers-hooks-common@^6.1.5:
+    version "6.1.5"
+    resolved "https://registry.yarnpkg.com/feathers-hooks-common/-/feathers-hooks-common-6.1.5.tgz#2884dda17d9f011fd63ff97f13b00ba5f89e49f3"
+    integrity sha512-xbAm8lKHBLghMgPoGvetg+mlTm04kG9sVy1IaPjRDAXOR3fblZDpMamqWjQ8vuHLU5zZ1SnrdEN9gmr53Xk+PA==
+    dependencies:
+      "@feathers-plus/batch-loader" "^0.3.6"
+      "@feathersjs/commons" "^4.5.15"
+      "@feathersjs/errors" "^4.5.15"
+      "@feathersjs/feathers" "^4.5.15"
+      ajv "^6.12.6"
+      debug "^4.3.4"
+      graphql "^16.5.0"
+      lodash "^4.17.21"
+      traverse "^0.6.6"
+  
+  feathers-mongodb-fuzzy-search@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/feathers-mongodb-fuzzy-search/-/feathers-mongodb-fuzzy-search-2.0.1.tgz#0a594284a1afd9d2c9637047dbca7e862bfebaec"
+    integrity sha512-/l76aUhU2vw4OGlsASQSxcV1XvVgwmWg4muhjK12EU8LkqFqUzkCJPQ3502ew9UzJF7qxI8hQ0SCv58PUfR1Qw==
+    dependencies:
+      "@feathersjs/commons" "^4.3.7"
+      "@feathersjs/errors" "^4.3.10"
+  
   feathers-mongoose@^8.5.1:
     version "8.5.1"
     resolved "https://registry.yarnpkg.com/feathers-mongoose/-/feathers-mongoose-8.5.1.tgz#ddd94dbdf0a9393cc28482341fc5e57eaf8b6675"
@@ -3227,6 +3289,11 @@ Lockfile:
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
     integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+  
+  graphql@^16.5.0:
+    version "16.6.0"
+    resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.6.0.tgz#c2dcffa4649db149f6282af726c8c83f1c7c5fdb"
+    integrity sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==
   
   has-binary2@~1.0.2:
     version "1.0.3"
@@ -4035,6 +4102,11 @@ Lockfile:
     integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
     dependencies:
       yallist "^4.0.0"
+  
+  luxon@^3.2.1:
+    version "3.2.1"
+    resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.2.1.tgz#14f1af209188ad61212578ea7e3d518d18cee45f"
+    integrity sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==
   
   make-dir@^3.0.0:
     version "3.1.0"
@@ -5042,6 +5114,11 @@ Lockfile:
     integrity sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==
     dependencies:
       punycode "^2.1.1"
+  
+  traverse@^0.6.6:
+    version "0.6.7"
+    resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.7.tgz#46961cd2d57dd8706c36664acde06a248f1173fe"
+    integrity sha512-/y956gpUo9ZNCb99YjxG7OaslxZWHfCHAUUfshwqOXmxUIvqLjVO581BT+gM59+QV9tFe6/CGG53tsA1Y7RSdg==
   
   tree-kill@^1.2.2:
     version "1.2.2"

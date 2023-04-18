@@ -19,10 +19,20 @@ export default function (app: Application): Model<any> {
       type: String,
       required: true,
     },
-    avgRating: {
+    avatar: {
+      type: String,
+    },
+    avgTeachingRating: {
       type: Number,
       default: 0,
-      required: true,
+    },
+    avgMarkingRating: {
+      type: Number,
+      default: 0,
+    },
+    avgAttendanceRating: {
+      type: Number,
+      default: 0,
     },
     status: {
       type: Number,

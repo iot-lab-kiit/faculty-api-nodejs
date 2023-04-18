@@ -21,7 +21,7 @@ export default function (app: Application): Model<any> {
           points: {
             type: Number,
           },
-          desciption: {
+          description: {
             type: String,
           },
         },
@@ -29,7 +29,7 @@ export default function (app: Application): Model<any> {
           points: {
             type: Number,
           },
-          desciption: {
+          description: {
             type: String,
           },
         },
@@ -37,7 +37,7 @@ export default function (app: Application): Model<any> {
           points: {
             type: Number,
           },
-          desciption: {
+          description: {
             type: String,
           },
         },
