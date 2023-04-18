@@ -1,6 +1,6 @@
-# aerofit-api-nodejs
+# faculty-api-nodejs
 
-> Aerfit Gym API
+> Faculty Review API
 
 ## About
 
