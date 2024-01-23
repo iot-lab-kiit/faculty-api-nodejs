@@ -17,7 +17,7 @@ const { authenticate } = authentication.hooks;
 
 export default {
   before: {
-    all: [authenticate('jwt')],
+    all: [authenticate('firebase')],
     find: [
       SetDefaultQuery('status', ACTIVE),
       search({

@@ -7,26 +7,9 @@
     "max": 50
   },
   "authentication": {
-    "entity": "user",
-    "service": "users",
+    "oauth": {},
     "secret": "KD3VmDj6rQKZqIAHEXZPEXcsHPs=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
-    "jwtOptions": {
-      "header": {
-        "typ": "access"
-      },
-      "audience": "https://yourdomain.com",
-      "issuer": "feathers",
-      "algorithm": "HS256",
-      "expiresIn": "1d"
-    },
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
-    }
-  },
-  "mongodb": "mongodb+srv://ProgrammerGod:Suvo%402003@cluster0.vtkxqsx.mongodb.net/faculty_api_nodejs"
+    "service": "users",
+    "authStrategies": ["firebase"]
+  }
 }

@@ -14,7 +14,7 @@ const { authenticate } = authentication.hooks;
 
 export default {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [ authenticate('firebase') ],
     find: [],
     get: [],
     create: [SetCreatedBy(), ProfanityCheck(), SetDefaultItem('status', ACTIVE)],

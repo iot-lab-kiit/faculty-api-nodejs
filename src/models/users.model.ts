@@ -21,7 +21,12 @@ export default function (app: Application): Model<any> {
         unique: true,
         lowercase: true,
       },
-      password: {
+      uid: {
+        type: String,
+        unique: true,
+        required: true,
+      },
+      pictureUrl: {
         type: String,
       },
       role: {
@@ -45,5 +50,6 @@ export default function (app: Application): Model<any> {
   if (mongooseClient.modelNames().includes(modelName)) {
     (mongooseClient as any).deleteModel(modelName);
   }
+  // @ts-ignore
   return mongooseClient.model<any>(modelName, schema);
 }
