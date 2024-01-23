@@ -2,44 +2,54 @@
 
 > Faculty Review API
 
+## Table of Contents
+
+- [About](#about)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+
 ## About
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+This is a RESTful API for the Faculty Review application.
+
+## Tech Stack
+
+- [NodeJS](https://nodejs.org/)
+- [FeathersJS](https://feathersjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/)
 
 ## Getting Started
 
 Getting up and running is as easy as 1, 2, 3.
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
+2. Clone this repository and install its dependencies:
 
-    ```
-    cd path/to/aerofit-api-nodejs
-    npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers help                           # Show all commands
+```bash
+git clone https://github.com/iot-lab-kiit/faculty-api-nodejs
 ```
 
-## Help
+```bash
+cd faculty-api-nodejs
+```
 
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+```bash
+yarn
+```
+
+3. Configure environment variables:
+
+Add mongoDB connection string. Check [.env.example](.env.example) for reference.
+
+4. Add firebase service account
+
+Add firebase service account configs in the `src/service.json`. Check [service.json.example](service.json.example) for reference.
+
+5. Start your app locally:
+
+```bash
+yarn local
+```
