@@ -55,11 +55,6 @@ export default function (app: Application): Model<any> {
         ref: 'faculties',
         required: true,
       },
-      subject: {
-        type: Schema.Types.ObjectId,
-        ref: 'subjects',
-        required: true,
-      },
       createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'users',
