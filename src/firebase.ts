@@ -28,6 +28,7 @@ export class FirebaseJWTStrategy extends JWTStrategy {
       if (!user) {
         throw new NotAuthenticated();
       }
+      let existingUser = await this.getEntity(user.uid, params);
 
       /**
        * Only create/update the user if the params.provider is rest.
@@ -37,8 +38,7 @@ export class FirebaseJWTStrategy extends JWTStrategy {
        */
       if (params.provider === 'rest') {
         logger.info('params.provider is rest, creating/updating user');
-        const existingUser = await this.getEntity(user.uid, params);
-        !existingUser ? await this.createEntity(user, params) : await this.updateEntity(existingUser, user, params);
+        existingUser = !existingUser ? await this.createEntity(user, params) : await this.updateEntity(existingUser, user, params);
       }
 
       return {
@@ -47,7 +47,7 @@ export class FirebaseJWTStrategy extends JWTStrategy {
           strategy: this.name!!,
           accessToken: token,
           payload: {
-            user: await this.getEntityData(user),
+            user: existingUser
           },
         },
       };
