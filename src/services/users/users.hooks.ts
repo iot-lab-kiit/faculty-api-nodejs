@@ -18,7 +18,7 @@ export default {
       SetDefaultItem('role', STUDENT),
     ],
     update: [disallow()],
-    patch: [authenticate('firebase'), SetCreatedByQuery()],
+    patch: [authenticate('firebase')],
     remove: [authenticate('firebase'), SetCreatedByQuery()],
   },
 
