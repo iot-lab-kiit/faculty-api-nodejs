@@ -12,7 +12,7 @@ const Permit = (role: number) => (context: HookContext) => {
 
   if (typeof params.provider === 'undefined') return context;
 
-  const { user } = params;
+  const { user } = params.authentication?.payload;
 
   if (!user) return context;
 
@@ -27,9 +27,7 @@ const Permit = (role: number) => (context: HookContext) => {
 Permit.is =
   (...roles: (number[] | number)[]) =>
     async (context: HookContext) => {
-      const {
-        params: { user },
-      } = context;
+      const { user } = context.params.authentication?.payload
 
       if (!user) throw new NotAuthenticated();
 

@@ -8,7 +8,7 @@ import { HookContext } from '@feathersjs/feathers';
 const SetCreatedBy =
   (key = 'createdBy') =>
     (context: HookContext) => {
-      const { user } = context.params;
+      const { user } = context.params.authentication?.payload
       if (!user) return context;
       if (Array.isArray(context.data)) {
         context.data.map((each) => {

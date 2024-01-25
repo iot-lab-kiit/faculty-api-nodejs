@@ -10,7 +10,8 @@ const SetCreatedByQuery =
     (context: HookContext) => {
       const { params } = context;
 
-      const { user, query = {} } = params;
+      const { query = {} } = params;
+      const { user } = params.authentication?.payload
 
       if (!user) return context;
 
