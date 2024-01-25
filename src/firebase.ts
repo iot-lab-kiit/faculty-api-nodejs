@@ -64,13 +64,16 @@ export class FirebaseJWTStrategy extends JWTStrategy {
       },
       ...params,
     });
-    const [entity = null] = result.data ? result.data : result;
+    if (!result.data || result.data.length === 0) {
+      return result;
+    }
+    const entity = result.data.find((entry: any) => entry.uid === id);
     return entity;
   }
 
   async createEntity(user: DecodedIdToken, params: Params) {
     const data = await this.getEntityData(user, null, params);
-    return this.entityService.create(data, params);
+    return await this.entityService.create(data, params);
   }
 
   async updateEntity(
@@ -80,7 +83,7 @@ export class FirebaseJWTStrategy extends JWTStrategy {
   ) {
     const id = existingEntity['_id'];
     const data = await this.getEntityData(user, existingEntity, params);
-    return this.entityService.patch(id, data, params);
+    return await this.entityService.patch(id, data, params);
   }
 
   async getEntityData(
