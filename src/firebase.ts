@@ -25,6 +25,7 @@ export class FirebaseJWTStrategy extends JWTStrategy {
     try {
       const token = authentication.accessToken ?? authentication.access_token;
       const user = await firebaseAdmin.auth().verifyIdToken(token);
+      console.log('user', user);
       if (!user) {
         throw new NotAuthenticated();
       }
@@ -91,6 +92,12 @@ export class FirebaseJWTStrategy extends JWTStrategy {
     _existingEntity?: any,
     _params?: Params,
   ) {
+    let email = user.email;
+    // For Edge cases where email is not provided in the token
+    if (!email) {
+      const record = await firebaseAdmin.auth().getUser(user.uid);
+      email = record.providerData[0].email;
+    }
     return {
       uid: user.uid,
       email: user.email,
