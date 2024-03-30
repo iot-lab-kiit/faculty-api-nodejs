@@ -25,7 +25,6 @@ export class FirebaseJWTStrategy extends JWTStrategy {
     try {
       const token = authentication.accessToken ?? authentication.access_token;
       const user = await firebaseAdmin.auth().verifyIdToken(token);
-      console.log('user', user);
       if (!user) {
         throw new NotAuthenticated();
       }
