@@ -64,11 +64,12 @@ export class FirebaseJWTStrategy extends JWTStrategy {
         uid: id,
       },
       ...params,
+      paginate: false,
     });
-    if (!result.data || result.data.length === 0) {
-      return result;
+    if (!result) {
+      return null;
     }
-    const entity = result.data.find((entry: any) => entry.uid === id);
+    const entity = result.find((entry: any) => entry.uid == id);
     return entity;
   }
 
