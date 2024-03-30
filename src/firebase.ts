@@ -25,7 +25,6 @@ export class FirebaseJWTStrategy extends JWTStrategy {
     try {
       const token = authentication.accessToken ?? authentication.access_token;
       const user = await firebaseAdmin.auth().verifyIdToken(token);
-      console.log('user', user);
       if (!user) {
         throw new NotAuthenticated();
       }
@@ -64,11 +63,12 @@ export class FirebaseJWTStrategy extends JWTStrategy {
         uid: id,
       },
       ...params,
+      paginate: false,
     });
-    if (!result.data || result.data.length === 0) {
-      return result;
+    if (!result) {
+      return null;
     }
-    const entity = result.data.find((entry: any) => entry.uid === id);
+    const entity = result.find((entry: any) => entry.uid == id);
     return entity;
   }
 
